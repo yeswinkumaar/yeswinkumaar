@@ -1,0 +1,43 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.bms'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation("org.springdoc:springdoc-openapi-ui:1.4.6")
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+	testImplementation 'io.rest-assured:rest-assured:3.3.0'
+	testImplementation 'io.rest-assured:json-schema-validator:3.0.6'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	// https://mvnrepository.com/artifact/junit/junit
+	testImplementation group: 'junit', name: 'junit'
+
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+	testImplementation 'org.mockito:mockito-junit-jupiter:2.28.2'
+
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+	testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.3.1'
+
+
+	// https://mvnrepository.com/artifact/org.mockito/mockito-all
+//	testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
